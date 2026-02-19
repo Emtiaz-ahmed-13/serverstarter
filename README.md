@@ -1,106 +1,100 @@
-# Express Typescript PostgreSQL Starter
+# Express TypeScript PostgreSQL Starter
 
-A robust starter template for building REST APIs using Express.js, PostgreSQL, Prisma ORM, and TypeScript.
+A professional-grade starter template for building high-performance REST APIs using Express.js, PostgreSQL, Prisma ORM, and TypeScript. This boilerplate includes essential features like authentication, validation, and error handling out of the box.
 
-## Features
+## 🚀 Key Features
 
-- 🚀 Express.js with TypeScript
-- 📦 PostgreSQL database with Prisma ORM
-- ⚡ Rate Limiting
-- 🌐 CORS enabled
-- 🔄 Request Validation using Zod
-- 🎯 Error Handling
-- 🔒 Environment Variables Support
+- **TypeScript Core**: Full type safety and modern JavaScript features.
+- **Prisma ORM**: Type-safe database access with PostgreSQL.
+- **Authentication**: JWT-based authentication flow implemented.
+- **Validation**: Request body and parameter validation using **Zod**.
+- **Security**: CORS enabled, rate-limiting implemented, and environment variable protection.
+- **Error Handling**: Standardized global error handling with custom `ApiError` class.
+- **Deployment Ready**: Configuration for Vercel included.
 
-## Prerequisites
+## 🛠️ Tech Stack
 
-- Node.js (v14 or higher)
+- **Backend**: Node.js, Express.js
+- **Language**: TypeScript
+- **Database**: PostgreSQL
+- **ORM**: Prisma
+- **Validation**: Zod
+- **Authentication**: JsonWebToken (JWT), Bcrypt
+
+## 📋 Prerequisites
+
+Ensure you have the following installed:
+- Node.js (v18.x or higher)
 - PostgreSQL
-- npm/yarn
+- npm or yarn
 
-## Getting Started
+## ⚙️ Getting Started
 
-1. Clone the repository:
-
-```sh
+### 1. Clone the Repository
+```bash
 git clone <repository-url>
-cd express-typescript-postgresql-starter
+cd serverstarter
 ```
 
-2. Install dependencies:
-
-```sh
+### 2. Install Dependencies
+```bash
 npm install
 ```
 
-3. Configure environment variables:
-
-```sh
-cp  .env
+### 3. Environment Configuration
+Create a `.env` file from `.env.sample`:
+```bash
+cp .env.sample .env
 ```
+Update the following variables in `.env`:
+- `DATABASE_URL`: Your PostgreSQL connection string.
+- `JWT_ACCESS_SECRET`: Secret for access tokens.
+- `JWT_REFRESH_SECRET`: Secret for refresh tokens.
+- `PORT`: (Default: 5000)
 
-Fill in the `.env` file with your configuration:
-
-- `NODE_ENV`: development or production
-- `DATABASE_URL`: Your PostgreSQL connection string
-- `PORT`: Server port (default: 5000)
-- `JWT_SECRET`: Secret key for JWT tokens
-- Other JWT configuration variables
-
-4. Run database migrations:
-
-```sh
+### 4. Database Setup
+Generate Prisma client and run migrations:
+```bash
+npx prisma generate
 npx prisma migrate dev
 ```
 
-5. Start development server:
-
-```sh
+### 5. Start Development Server
+```bash
 npm run dev
 ```
 
-## Available Scripts
+## 📜 Available Scripts
 
-- `npm run dev` - Start development server with hot-reload
-- `npm run build` - Build for production
-- `npm start` - Start production server
-- `npm run start:prod` - Run the built production server
+| Script | Description |
+| :--- | :--- |
+| `npm run dev` | Runs the app in development mode with hot-reload. |
+| `npm run build` | Compiles TypeScript to JavaScript in the `dist/` folder. |
+| `npm start` | Runs the compiled production build from `dist/`. |
+| `npm run postinstall` | Automatically generates Prisma client after installs. |
 
-## API Routes
+## 📂 Project Structure
 
-- Auth Routes (`/api/v1/auth`)
-  - POST `/login` - User login
-
-## Project Structure
-
-```
+```text
 src/
-  ├── app/
-  │   ├── errors/
-  │   ├── middleware/
-  │   ├── modules/
-  │   ├── routes/
-  │   └── shared/
-  ├── config/
-  ├── helpers/
-  ├── app.ts
-  └── server.ts
+├── app/
+│   ├── errors/           # Custom error classes
+│   ├── middleware/       # Global and local middlewares
+│   ├── modules/          # Business logic (Auth, etc.)
+│   ├── routes/           # API Route definitions
+│   └── shared/           # Shared utilities and types
+├── config/               # Configuration files (env, etc.)
+├── helpers/              # Helper functions
+├── app.ts                # App initialization
+└── server.ts             # Server entry point
 ```
 
-## Error Handling
+## 🔒 API Endpoints (Auth Example)
 
-The application includes a global error handler and custom `ApiError` class for consistent error responses.
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `POST` | `/api/v1/auth/login` | Authenticates a user and returns tokens. |
 
-## Database
+## 📄 License
 
-- PostgreSQL with Prisma ORM
-- Structured database schema
-- Efficient query handling
-
-## Deployment
-
-The project includes Vercel deployment configuration in `vercel.json`.
-
-## License
-
-[MIT License](LICENSE)
+This project is licensed under the [ISC License](LICENSE).
